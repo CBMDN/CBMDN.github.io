@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christ Mulenga | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --accent: #3b82f6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .project-features {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .project-features h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-item::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 2rem 0;
+        }
+
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(124, 58, 237, 0.2));
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .company {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+        }
+
+        .experience-item li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .cert-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+        }
+
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .featured-project {
+                padding: 2rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CM</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Hello, I'm</p>
+            <h1 class="hero-title">Christ Mulenga</h1>
+            <p class="hero-description">
+                Systems Engineer | Full-Stack Developer | Network Specialist
+            </p>
+            <div class="social-links">
+                <a href="mailto:christmulenga11@gmail.com" class="social-btn">
+                    📧 Email
+                </a>
+                <a href="https://github.com/christmulenga" target="_blank" class="social-btn">
+                    💻 GitHub
+                </a>
+                <a href="https://linkedin.com/in/christmulenga" target="_blank" class="social-btn">
+                    🔗 LinkedIn
+                </a>
+                <a href="tel:+260978573928" class="social-btn">
+                    📞 Call
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                A results-driven IT professional with strong expertise in Systems Engineering, Networking, 
+                Information Security, and Full-Stack Development. I specialize in building scalable web applications, 
+                configuring network infrastructure, and implementing robust database solutions.
+            </p>
+            <p style="margin-top: 1.5rem;">
+                With a passion for problem-solving and continuous learning, I bring both technical excellence 
+                and strong collaborative skills to every project. My experience spans from healthcare IT systems 
+                to high-performance computing clusters.
+            </p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Frontend Development</h3>
+                <ul>
+                    <li>React & TypeScript</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>HTML5 & CSS3</li>
+                    <li>Responsive Design</li>
+                    <li>AJAX & jQuery</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Backend Development</h3>
+                <ul>
+                    <li>Python (Django)</li>
+                    <li>PHP & MySQL</li>
+                    <li>Node.js</li>
+                    <li>RESTful APIs</li>
+                    <li>JWT Authentication</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Database Management</h3>
+                <ul>
+                    <li>MySQL & PostgreSQL</li>
+                    <li>SQL & NoSQL</li>
+                    <li>Database Design</li>
+                    <li>Query Optimization</li>
+                    <li>Data Security</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Network Engineering</h3>
+                <ul>
+                    <li>LAN/WAN Configuration</li>
+                    <li>Routing & Switching</li>
+                    <li>Network Security</li>
+                    <li>Cisco Technologies</li>
+                    <li>Troubleshooting</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>System Administration</h3>
+                <ul>
+                    <li>Linux Administration</li>
+                    <li>Cloud Computing (AWS)</li>
+                    <li>Parallel Computing</li>
+                    <li>Hardware Maintenance</li>
+                    <li>System Configuration</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Tools & Technologies</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>VS Code</li>
+                    <li>OpenAPI</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <!-- Featured Project -->
+        <div class="featured-project">
+            <span class="featured-badge">⭐ Featured Project</span>
+            <h3 class="project-title">Hospital Leave Management System</h3>
+            <p class="project-description">
+                A comprehensive web-based system designed to digitize and streamline employee leave request workflows 
+                for Chilenje Level One Hospital. This project successfully reduced manual processing time and provided 
+                centralized data management for hospital HR operations.
+            </p>
+
+            <div class="project-features">
+                <h4>🎯 Key Features</h4>
+                <div class="features-grid">
+                    <div class="feature-item">Secure user authentication with session management</div>
+                    <div class="feature-item">Interactive dashboard with real-time statistics</div>
+                    <div class="feature-item">Complete CRUD operations for employee records</div>
+                    <div class="feature-item">Automated leave approval workflow</div>
+                    <div class="feature-item">Intelligent date calculations</div>
+                    <div class="feature-item">Dynamic search functionality</div>
+                    <div class="feature-item">Modal-based editing interfaces</div>
+                    <div class="feature-item">Responsive design with modern UI/UX</div>
+                </div>
+            </div>
+
+            <div class="project-features">
+                <h4>🔒 Security & Performance</h4>
+                <div class="features-grid">
+                    <div class="feature-item">SQL injection prevention through prepared statements</div>
+                    <div class="feature-item">XSS protection and input validation</div>
+                    <div class="feature-item">Password hashing for secure authentication</div>
+                    <div class="feature-item">AJAX for real-time data processing</div>
+                    <div class="feature-item">Optimized database queries</div>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">AJAX</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+            </div>
+
+            <div class="project-links">
+                <a href="#" class="btn btn-primary">🔗 View Demo</a>
+                <a href="https://github.com/christmulenga" class="btn btn-secondary">💻 Source Code</a>
+            </div>
+        </div>
+
+        <!-- Course Projects Grid -->
+        <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: var(--text-primary);">Other Projects</h3>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Hospital Management System</h3>
+                    <p class="project-role">Full-Stack Developer</p>
+                </div>
+                <div class="project-body">
+                    <p>Complete healthcare workflow management including patient registration, appointments, staff management, and medical records.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Beowulf Cluster</h3>
+                    <p class="project-role">Systems Administrator</p>
+                </div>
+                <div class="project-body">
+                    <p>High-performance computing cluster setup using virtual and physical machines for distributed and parallel computing.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">MPI/OpenMP</span>
+                        <span class="tech-tag">Networking</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Network Infrastructure</h3>
+                    <p class="project-role">Network Engineer</p>
+                </div>
+                <div class="project-body">
+                    <p>Complete hospital network setup with routers, switches, and wireless access points ensuring system reliability and security.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Cisco</span>
+                        <span class="tech-tag">Networking</span>
+                        <span class="tech-tag">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience & Education</h2>
+
+        <div class="experience-item">
+            <h3>IT Intern</h3>
+            <p class="company">Chilenje Level One Hospital, Lusaka, Zambia</p>
+            <p class="date">October 2025 - January 2026</p>
+            <ul>
+                <li>Designed and managed patient record databases with SmartCare Zambia integration ensuring data accuracy and compliance</li>
+                <li>Configured and maintained network infrastructure including routers, switches, and wireless access points</li>
+                <li>Diagnosed and resolved network connectivity issues, ensuring 99% system uptime and reliability</li>
+                <li>Assembled, installed, and configured computer hardware systems for administrative and clinical departments</li>
+                <li>Developed comprehensive leave management system using PHP, MySQL, JavaScript, and AJAX</li>
+                <li>Built interactive dashboards with real-time statistics and automated approval workflows</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Bachelor of Science in Computer Science</h3>
+            <p class="company">The University of Zambia</p>
+            <p class="date">Graduated 2025</p>
+            <p style="color: var(--text-secondary);">
+                Comprehensive coursework in software development, systems engineering, networking, artificial intelligence, 
+                cloud computing, and database management.
+            </p>
+        </div>
+
+        <h3 style="font-size: 2rem; margin: 3rem 0 2rem; text-align: center; color: var(--text-primary);">Professional Certifications</h3>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h4>AWS Cloud Foundations</h4>
+                <p>Amazon Web Services • 2025</p>
+            </div>
+            <div class="cert-card">
+                <h4>CCNA v7 IT Networks</h4>
+                <p>Cisco Networking Academy • 2024</p>
+            </div>
+            <div class="cert-card">
+                <h4>NDG Linux Essentials</h4>
+                <p>Cisco Networking Academy • 2023</p>
+            </div>
+            <div class="cert-card">
+                <h4>CCNA IT Essentials</h4>
+                <p>Cisco Networking Academy • 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            I'm always interested in new opportunities and collaborations. Whether you have a project in mind
